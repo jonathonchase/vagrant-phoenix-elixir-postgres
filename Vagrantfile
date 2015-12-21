@@ -36,6 +36,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision :shell, path: 'config/vagrant/nodejs_setup.sh'
   config.vm.provision :shell, path: 'config/vagrant/postgresql_setup.sh'
   config.vm.provision :shell, path: 'config/vagrant/elixir_setup.sh'
+  config.vm.provision :shell, path: 'config/vagrant/zsh_custom_setup.sh'
+  config.vm.provision :shell, path: 'config/vagrant/emacs_setup.sh'
+  config.vm.provision :shell, path: 'config/vagrant/emacs_custom_setup.sh'
+  config.vm.provision :shell, path: 'config/vagrant/tmux_custom_setup.sh'
   config.vm.provision :shell, path: 'config/vagrant/phoenix_setup.sh', privileged: false
 
   # PostgreSQL Server port forwarding
