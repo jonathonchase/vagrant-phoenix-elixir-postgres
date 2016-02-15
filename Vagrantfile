@@ -30,6 +30,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision :shell, path: 'config/vagrant/phoenix_setup.sh', privileged: false
   config.vm.provision :shell, path: 'config/vagrant/zsh_custom_setup.sh'
   config.vm.provision :shell, path: 'config/vagrant/oh_my_zsh_setup.sh', privileged: false
+  config.vm.provision :shell, inline: 'sudo apt-get install -y entr'
   
   
   # PostgreSQL Server port forwarding
