@@ -24,15 +24,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision :shell, path: 'config/vagrant/nodejs_setup.sh'
   config.vm.provision :shell, path: 'config/vagrant/postgresql_setup.sh'
   config.vm.provision :shell, path: 'config/vagrant/elixir_setup.sh'
-  config.vm.provision :shell, path: 'config/vagrant/emacs_setup.sh'
-  config.vm.provision :shell, path: 'config/vagrant/emacs_custom_setup.sh'
   config.vm.provision :shell, path: 'config/vagrant/tmux_custom_setup.sh'
   config.vm.provision :shell, path: 'config/vagrant/phoenix_setup.sh', privileged: false
   config.vm.provision :shell, path: 'config/vagrant/zsh_custom_setup.sh'
   config.vm.provision :shell, path: 'config/vagrant/oh_my_zsh_setup.sh', privileged: false
   config.vm.provision :shell, inline: 'sudo apt-get install -y entr'
-  
-  
+
+  # Spacemacs or not spacemacs (uncoment to leave vanilla emacs)
+  config.vm.provision :shell, path: 'config/vagrant/emacs_setup.sh'
+  #config.vm.provision :shell, path: 'config/vagrant/emacs_custom_setup.sh'
+  config.vm.provision :shell, path: 'config/vagrant/spacemacs_setup.sh', privileged: false
+  config.vm.provision :shell, inline: 'echo "alias wendify-spacemacs=\"wget -O ~/.spacemacs https://raw.githubusercontent.com/wende/dotfiles/master/.spacemacs_new\""'
   # PostgreSQL Server port forwarding
   config.vm.network :forwarded_port, host: 4000, guest: 4000
   config.vm.network :forwarded_port, host: 5432, guest: 5432
