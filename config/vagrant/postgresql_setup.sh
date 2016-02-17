@@ -108,4 +108,4 @@ print_db_usage
 echo "=== End Vagrant Provisioning using 'config/vagrant/postgresql_setup.sh'"
 
 ## Essential since 20160210.0.0 box - don't ask me why
-sudo -u postgres psql -U postgres -d postgres -c "alter user postgres with password 'password';"
+sudo -u postgres psql -U postgres -d postgres -c "alter user postgres with password 'postgres';"
