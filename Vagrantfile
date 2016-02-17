@@ -28,13 +28,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision :shell, path: 'config/vagrant/phoenix_setup.sh', privileged: false
   config.vm.provision :shell, path: 'config/vagrant/zsh_custom_setup.sh'
   config.vm.provision :shell, path: 'config/vagrant/oh_my_zsh_setup.sh', privileged: false
-  config.vm.provision :shell, inline: 'sudo apt-get install -y entr'
+  config.vm.provision :shell, inline: 'apt-get install -y entr'
+  config.vm.provision :shell, inline: 'npm install -g phantomjs'
 
   # Spacemacs or not spacemacs (uncoment to leave vanilla emacs)
   config.vm.provision :shell, path: 'config/vagrant/emacs_setup.sh'
   #config.vm.provision :shell, path: 'config/vagrant/emacs_custom_setup.sh'
   config.vm.provision :shell, path: 'config/vagrant/spacemacs_setup.sh', privileged: false
-  config.vm.provision :shell, inline: 'echo "alias wendify-spacemacs=\"wget -O ~/.spacemacs https://raw.githubusercontent.com/wende/dotfiles/master/.spacemacs_new\""'
+  config.vm.provision :shell, inline: 'echo "alias wendify-spacemacs=\"wget -O ~/.spacemacs https://raw.githubusercontent.com/wende/dotfiles/master/.spacemacs\""'
   # PostgreSQL Server port forwarding
   config.vm.network :forwarded_port, host: 4000, guest: 4000
   config.vm.network :forwarded_port, host: 5432, guest: 5432
