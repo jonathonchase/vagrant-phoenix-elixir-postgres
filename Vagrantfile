@@ -40,7 +40,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network :forwarded_port, host: 4000, guest: 4000
   config.vm.network :forwarded_port, host: 5432, guest: 5432
   config.vm.network "private_network", ip: "192.168.1.111"
-  
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = "1024"
+  end
+
   config.ssh.username = "vagrant"
   config.ssh.password = "vagrant"
   config.ssh.insert_key = false
