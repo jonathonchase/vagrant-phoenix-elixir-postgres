@@ -1,2 +1,6 @@
-.vagrant
-.vagrant/
+*
+!.gitignore
+!script.pl
+!template.latex
+!Vagrantfile
+!config/
