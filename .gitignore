@@ -3,4 +3,4 @@
 !script.pl
 !template.latex
 !Vagrantfile
-!config/**
+!config/**/*
