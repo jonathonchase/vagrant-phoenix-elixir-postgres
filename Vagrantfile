@@ -14,8 +14,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # options are documented and commented below. For a complete reference,
   # please see the online documentation at vagrantup.com.
 
-  config.vm.synced_folder ".", "/vagrant", type: "rsync",
-                              rsync__exclude: ".git/"
+  config.vm.synced_folder ".", "/vagrant", type: "rsync", 
+                          rsync__exclude: [".git", ".#*", "_build", "node_modules", "priv/static"],
+                          rsync__auto: true
+
 
   config.vm.provision 'shell', inline: $script
 
@@ -50,9 +52,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.memory = "2048"
   end
 
-  config.ssh.username = "vagrant"
-  #config.ssh.password = "vagrant"
-  config.ssh.insert_key = true
-  config.ssh.private_key_path = "~/.ssh/id_rsa"
-  config.ssh.forward_agent = true
+  # config.ssh.username = "vagrant"
+  # config.ssh.password = "vagrant"
+  # config.ssh.insert_key = false
+  # #config.ssh.private_key_path = "~/.ssh/id_rsa"
+  # config.ssh.forward_agent = true
 end
