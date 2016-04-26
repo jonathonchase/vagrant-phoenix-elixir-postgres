@@ -51,3 +51,5 @@ All projects You start in vagrant will run in safe sandbox. All changes in your 
 - `mix ecto.create`
 - `mix ecto.migrate`
 - `mix test`
+- Make sure it runs on port `4000` in `config/dev.ex`
+- `mix phoenix.server`
