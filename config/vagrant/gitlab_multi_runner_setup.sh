@@ -11,6 +11,6 @@ fi
 
 curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-ci-multi-runner/script.deb.sh | sudo bash
 sudo apt-get install -y gitlab-ci-multi-runner
-sudo gitlab-ci-multi-runner register -u $GITLAB_URL -t $GITLAB_TOKEN --executor shell -n --tag-list elixir,phoenix,erlang,postgresql
-
+sudo gitlab-ci-multi-runner register -u $GITLAB_URL -r $GITLAB_TOKEN --executor shell -n --tag-list elixir,phoenix,erlang,postgresql
+sudo gitlab-ci-multi-runner restart
 echo "=== End Vagrant Provisioning using 'config/vagrant/gitlab_multi_runner_setup.sh'"
