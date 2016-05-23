@@ -14,7 +14,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # options are documented and commented below. For a complete reference,
   # please see the online documentation at vagrantup.com.
 
-  config.vm.synced_folder ".", "/vagrant", type: "rsync", 
+  config.vm.synced_folder ".", "/vagrant", type: "rsync",
                           rsync__exclude: [".git", ".#*", "_build", "node_modules", "priv/static"],
                           rsync__auto: true
 
@@ -44,9 +44,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision :shell, inline: 'echo "alias wendify-spacemacs=\"wget -O ~/.spacemacs https://raw.githubusercontent.com/wende/dotfiles/master/.spacemacs\""'
   # PostgreSQL Server port forwarding
   config.vm.provision :shell, inline: 'yes Y | gem install dpl'
-  config.vm.network :forwarded_port, host: 4000, guest: 4000
+  #config.vm.network :forwarded_port, host: 4000, guest: 4000
   config.vm.network :forwarded_port, host: 5432, guest: 5432
-  config.vm.network "private_network", ip: "192.168.1.111"
+  config.vm.network "private_network", type: "dhcp"
 
   config.vm.provider "virtualbox" do |vb|
     vb.memory = "2048"
